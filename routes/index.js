@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 // });
 
 /* GET Add Survey */
-router.get('/survey/add-survey', function(req, res, next) {
+router.get('/add-survey', function(req, res, next) {
   res.render('index', { title: 'Create Survey' });
 });
 
