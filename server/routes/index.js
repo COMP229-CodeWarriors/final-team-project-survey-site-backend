@@ -14,15 +14,28 @@ router.get('/', indexController.displayHomePage);
 /* GET Add Survey */
 router.get('/add-survey',indexController.displayAddPage);
 
-/* GET Login */
+/* GET Statistics */
+router.get('/statistics', indexController.displayStatsPage);
+
+
+/* GET Route for displaying the Login page */
 router.get('/login', indexController.displayLoginPage);
+
+/* POST Route for processing the Login page */
+router.post('/login', indexController.processLoginPage);
+
+/* GET Route for displaying the Register page */
+router.get('/register', indexController.displayRegisterPage);
+
+/* POST Route for processing the Register page */
+router.post('/register', indexController.processRegisterPage);
+
+/* GET to perform UserLogout */
+router.get('/logout', indexController.performLogout);
 
 // /* GET My Survey */
 // router.get('/mySurvey', function(req, res, next) {
 //   res.render('index', { title: 'Access your Survey' });
 // });
-
-/* GET Statistics */
-router.get('/statistics', indexController.displayStatsPage);
 
 module.exports = router;

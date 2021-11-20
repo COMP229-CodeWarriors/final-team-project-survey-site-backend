@@ -1,27 +1,37 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+let passport = require('passport');
 
-//Connect to survey model
-let Survey = require('../models/survey');
 let surveyController = require('../controllers/survey');
 
-/* GET Route for Read Operation*/
-router.get('/',surveyController.displaySurveyList);
+//helper function for guarding
+function requireAuth(req, res, next)
+{
+    // check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
 
-/* GET route for displaying add/create page */
-router.get('/add', surveyController.displayAddPage);
+/* GET Route for the survey List page - READ Operation */
+router.get('/', surveyController.displaySurveyList);
 
-/* POST route for processing add/create page */
-router.post('/add', surveyController.processAddPage);
+/* GET Route for displaying the Add page - CREATE Operation */
+router.get('/add', requireAuth, surveyController.displayAddPage);
 
-/* GET route for displaying edit page */
-router.get('/edit/:id', surveyController.displayEditPage);
+/* POST Route for processing the Add page - CREATE Operation */
+router.post('/add', requireAuth, surveyController.processAddPage);
 
-/* POST route for processing edit page */
-router.post('/edit/:id',surveyController.processEditPage );
+/* GET Route for displaying the Edit page - UPDATE Operation */
+router.get('/edit/:id', requireAuth, surveyController.displayEditPage);
 
-/* GET route for deletion */
-router.get('/delete/:id',surveyController.performDelete );
+/* POST Route for processing the Edit page - UPDATE Operation */
+router.post('/edit/:id', requireAuth, surveyController.processEditPage);
+
+/* GET to perform  Deletion - DELETE Operation */
+router.get('/delete/:id', requireAuth, surveyController.performDelete);
 
 module.exports = router;
