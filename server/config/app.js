@@ -6,6 +6,10 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+let passportJWT = require('passport-jwt');
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
 //modules for authentication
 let session = require('express-session');
 let passport = require('passport');
@@ -26,6 +30,15 @@ mongoDB.on('error',console.error.bind(console,'Connection Error:'));
 mongoDB.once('open',()=>{
   console.log('Connected to MongoDB..');
 });
+
+// let userModel = require('../models/user');
+// let User = userModel.User;
+// // implement a User Authentication Strategy
+//
+//
+// // serialize and deserialize the User info
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 //Main Routers
 let indexRouter = require('../routes/index');
@@ -65,10 +78,27 @@ app.use(passport.session());
 let userModel = require('../models/user');
 let User = userModel.User;
 
+passport.use(User.createStrategy());
+
 //serialize deserialize user info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = DB.Secret;
+
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+      .then(user => {
+        return done(null, user);
+      })
+      .catch(err => {
+        return done(err, false);
+      });
+});
+
+passport.use(strategy);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

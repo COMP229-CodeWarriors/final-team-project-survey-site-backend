@@ -30,6 +30,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/passport": "^1.0.7",
     "@types/passport-local": "^1.0.34",
-    "@types/passport-local-mongoose": "^6.1.0"
+    "@types/passport-local-mongoose": "^6.1.0",
+    "passport-jwt": "^4.0.0"
   }
 }
