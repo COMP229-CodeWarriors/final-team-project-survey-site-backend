@@ -1,68 +1,80 @@
 <%- include ../partials/header.ejs %>
 
 <div class="container d-block" style="padding-left: 25%; min-height: 0;">
-    <h5 class="mt-5 mb-3">Survey List</h5>
+  <h5 class="mt-5 mb-3">Create Survey</h5>
     <form [formGroup]="surveyForm" (ngSubmit)="submit()" class="row g-3">
-      <div class="form-group">
+       <div class="form-group">
         <!-- <div class="col-md-8">
-          <label for="id" class="form-label">Id</label>
-          <input type="text" class="form-control" formControq1="id" id="id">
-        </div> -->
-      <div class="col-md-8">
-        <label for="fname" class="form-label">Survey Name</label>
-        <input type="text" class="form-control" formControq1="fname" id="fname">
-      </div>
-      <div class="col-md-8">
-        <label for="expireDate" class="form-label">Expiry Date</label>
-        <input type="date" class="form-control" formControq1="expireDate" id="expireDate">
-      </div>
+            <label for="id" class="form-label">Id</label>
+            <input type="text" class="form-control" formControq1="id" id="id">
+          </div> -->
+        <div class="col-md-8">
+          <label for="fname" class="form-label">Survey Name</label>
+          <input type="text" class="form-control" formControq1="fname" id="fname">
+        </div>
 
-      <div class="col-md-8">
-        <label for="q1" class="form-label">Q1</label>
-        <input type="text" class="form-control" formControq1="q1" id="q1">
-      </div>
-      <div class="col-md-8">
-        <label for="a1" class="form-label">A1</label>
-        <input type="text" class="form-control" formControq1="a1" id="a1">
-      </div>
 
-      <div class="col-8">
-        <label for="q2" class="form-label">Q2</label>
-        <input type="text" class="form-control" formControq1="q2" id="q2">
-      </div>
-      <div class="col-md-8">
-        <label for="a2" class="form-label">A2</label>
-        <input type="text" class="form-control" formControq1="a2" id="a2">
-      </div>
+        <div class="col-md-8">
+          <label for="description" class="form-label">Description</label>
+          <textarea type="text" class="form-control" formControq1="description" id="description"></textarea>
+        </div>
 
-      <div class="col-8">
-        <label for="q3" class="form-label">Q3</label>
-        <textarea type="text" class="form-control" formControq1="q3" id="q3" ></textarea>
-      </div>
-      <div class="col-md-8">
-        <label for="a3" class="form-label">A3</label>
-        <input type="text" class="form-control" formControq1="a3" id="a3">
-      </div>
+        <div class="col-md-8">
+          <label for="createdDate" class="form-label">Created Date</label>
+          <input type="text" class="form-control" formControq1="createdDate" id="createdDate">
+        </div>
 
-      <div class="col-8">
-        <label for="q4" class="form-label">Q4</label>
-        <textarea type="text" class="form-control" formControq1="q4" id="q4" ></textarea>
-      </div>
-      <div class="col-md-8">
-        <label for="a4" class="form-label">A4</label>
-        <input type="text" class="form-control" formControq1="a4" id="a4">
-      </div>
-      <!-- <div class="col-md-8">
-        <label for="createdDate" class="form-label">Created Date</label>
-        <input type="date" class="form-control" formControq1="createdDate" id="createdDate">
-      </div> -->
+        <div class="col-md-8">
+          <label for="expireDate" class="form-label">Expiry Date</label>
+          <input type="text" class="form-control" formControq1="expireDate" id="expireDate">
+        </div>
+
+        <div class="col-md-8">
+          <label for="q1" class="form-label">Q1</label>
+          <input type="text" class="form-control" formControq1="q1" id="q1">
+        </div>
+        <div class="col-md-8">
+          <label for="a1" class="form-label">A1</label>
+          <input type="text" class="form-control" formControq1="a1" id="a1">
+        </div>
+
+        <div class="col-8">
+          <label for="q2" class="form-label">Q2</label>
+          <input type="text" class="form-control" formControq1="q2" id="q2">
+        </div>
+        <div class="col-md-8">
+          <label for="a2" class="form-label">A2</label>
+          <input type="text" class="form-control" formControq1="a2" id="a2">
+        </div>
+
+        <div class="col-8">
+          <label for="q3" class="form-label">Q3</label>
+          <input type="text" class="form-control" formControq1="q3" id="q3">
+        </div>
+        <div class="col-md-8">
+          <label for="a3" class="form-label">A3</label>
+          <input type="text" class="form-control" formControq1="a3" id="a3">
+        </div>
+
+        <div class="col-8">
+          <label for="q4" class="form-label">Q4</label>
+          <input type="text" class="form-control" formControq1="q4" id="q4">
+        </div>
+        <div class="col-md-8">
+          <label for="a4" class="form-label">A4</label>
+          <input type="text" class="form-control" formControq1="a4" id="a4">
+        </div>
       
-      </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  
-  </div>
+        
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/surveylist" class="btn btn-warning"><i class="fas fa-undo"></i>Cancel</a>
+        
 
-  <%- include ../partials/footer.ejs %>
+      </div>
+     </form>
+     <br><br>
+
+</div>
+
+<%- include ../partials/footer.ejs %>

@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+
+let indexController = require('../controllers/index');
 
 /* GET root page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Survey Site' });
-});
+router.get('/', indexController.displayHomePage);
 
 // /* GET Home page. */
 // router.get('home', function(req, res, next) {
@@ -12,23 +12,17 @@ router.get('/', function(req, res, next) {
 // });
 
 /* GET Add Survey */
-router.get('/add-survey', function(req, res, next) {
-  res.render('index', { title: 'Create Survey' });
-});
+router.get('/add-survey',indexController.displayAddPage);
 
 /* GET Login */
-router.get('/login', function(req, res, next) {
-  res.render('index', { title: 'Login' });
-});
+router.get('/login', indexController.displayLoginPage);
 
-/* GET mySurvey */
-router.get('/mySurvey', function(req, res, next) {
-  res.render('index', { title: 'Access your Survey' });
-});
+// /* GET My Survey */
+// router.get('/mySurvey', function(req, res, next) {
+//   res.render('index', { title: 'Access your Survey' });
+// });
 
 /* GET Statistics */
-router.get('/statistics', function(req, res, next) {
-  res.render('index', { title: 'Generate Stats' });
-});
+router.get('/statistics', indexController.displayStatsPage);
 
 module.exports = router;
