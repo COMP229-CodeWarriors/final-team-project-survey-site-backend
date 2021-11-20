@@ -2,8 +2,8 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
-//Connect to surveydemo model
-let Survey = require('../models/surveymodel');
+//Connect to survey model
+let Survey = require('../models/survey');
 
 /* GET Route for Read Operation*/
 
@@ -16,8 +16,8 @@ router.get('/',(req, res, next) => {
         }
         else
         {
-           // console.log(Surveylist);
-           res.render('survey',{title: "Survey List", SurveyList: surveylist})
+        //    console.log(surveylist);
+         res.render('survey',{title: "Survey List", SurveyList: surveylist})
         }
     });
 
