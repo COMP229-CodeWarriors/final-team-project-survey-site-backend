@@ -1,3 +1,5 @@
+<%- include ../partials/header.ejs %>
+
 <div class="container d-block" style="padding-left: 25%; min-height: 0;">
     <h5 class="mt-5 mb-3">Survey List</h5>
     <form [formGroup]="surveyForm" (ngSubmit)="submit()" class="row g-3">
@@ -62,3 +64,5 @@
     </form>
   
   </div>
+
+  <%- include ../partials/footer.ejs %>
