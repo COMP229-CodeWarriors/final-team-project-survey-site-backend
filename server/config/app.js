@@ -62,12 +62,12 @@ app.use(passport.session());
 //passport user configuration
 
 //create User Model Instance
-// let userModel = require('../models/user');
-// let User = userModel.User;
+let userModel = require('../models/user');
+let User = userModel.User;
 
-// //serialize deserialize user info
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+//serialize deserialize user info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 app.use('/', indexRouter);
