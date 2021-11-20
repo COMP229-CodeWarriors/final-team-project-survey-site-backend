@@ -1,22 +1,22 @@
 //3rd party packages
-
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let cors = require('cors');
+
+//modules for authentication
+let session = require('express-session');
+let passport = require('passport');
 
 let passportJWT = require('passport-jwt');
 let JWTStrategy = passportJWT.Strategy;
 let ExtractJWT = passportJWT.ExtractJwt;
 
-//modules for authentication
-let session = require('express-session');
-let passport = require('passport');
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
-
 
 //Database setup
 let mongoose = require('mongoose');
@@ -30,15 +30,6 @@ mongoDB.on('error',console.error.bind(console,'Connection Error:'));
 mongoDB.once('open',()=>{
   console.log('Connected to MongoDB..');
 });
-
-// let userModel = require('../models/user');
-// let User = userModel.User;
-// // implement a User Authentication Strategy
-//
-//
-// // serialize and deserialize the User info
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
 
 //Main Routers
 let indexRouter = require('../routes/index');
